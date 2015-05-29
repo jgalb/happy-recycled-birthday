@@ -19,7 +19,7 @@
       // Log.info('Login Status', response);
       if (response.status === 'connected') {
         showAccountInfo();
-        getFriendLists(response.authResponse.userID);
+       	post();
       } else {
         document.getElementById('loginBtn').style.display = 'block';
       }
@@ -33,29 +33,28 @@
       document.getElementById('loginBtn').style.display = 'none';
     }
 
+function post() {
+	FB.ui({
+	  method: 'share',
+	  href: 'https://developers.facebook.com/docs/',
+	}, function(response){});
+}
+
     function getFriendLists(userId) {
-			FB.api(
-			    "/" + userId + "/friends",
-			    function (response) {
-			      if (response && !response.error) {
-			        console.log(response);
-			      }
-			    }
-			);
-//      FB.api('/me/friends', function(response) {
-//        if (response && !response.error) {
-//          /* handle the result */
-//          var todayBirthdaysFriends = [];
-//          for (var i = 0; i < response.data.length; i++) {
-//            if (isIDsBirthday(response.data[i].id)) {
-//              todayBirthdaysFriends.push(response.data[i].id);
-//            }
-//          }
-//
-//          //do something
-//          return todayBirthdaysFriends;
-//        }
-//      });
+      FB.api('/me/friends', function(response) {
+        if (response && !response.error) {
+          /* handle the result */
+          var todayBirthdaysFriends = [];
+          for (var i = 0; i < response.data.length; i++) {
+            if (isIDsBirthday(response.data[i].id)) {
+              todayBirthdaysFriends.push(response.data[i].id);
+            }
+          }
+
+          //do something
+          return todayBirthdaysFriends;
+        }
+      });
     }
 
     function isIDsBirthday(ID) {
