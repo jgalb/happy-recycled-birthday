@@ -34,11 +34,11 @@
     }
 
     function getFriendsList() {
-      FB.api('/me/friends', {}, function(response) {
+      FB.api('/me/friends', function(response) {
         var todayBirthdaysFriends = [];
-        for (var i = 0; i < response.length; i++) {
-          if (isIDsBirthday(response[i].id)) {
-            todayBirthdaysFriends.push(response[i].id);
+        for (var i = 0; i < response.data.length; i++) {
+          if (isIDsBirthday(response.data[i].id)) {
+            todayBirthdaysFriends.push(response.data[i].id);
           }
         }
 
