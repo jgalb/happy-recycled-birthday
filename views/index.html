@@ -1,4 +1,25 @@
-<!DOCTYPE html>
+<!doctype html> <html> <head> <meta charset="utf-8"> <title></title> <meta name="description" content=""> <meta name="viewport" content="width=device-width"> <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> <link rel="stylesheet" href="styles/vendor.93a2b65d.css"> <link rel="stylesheet" href="styles/main.16c86e60.css"> <script>window.fbAsyncInit = function() {
+        FB.init({
+          appId: '1679378368956567',
+          xfbml: true,
+          version: 'v2.3'
+        });
+        // ADD ADDITIONAL FACEBOOK CODE HERE
+
+      };
+
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {
+          return;
+        }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>  <body ng-app="testingApp"> <!--[if lte IE 8]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]--> <!-- Add your site or application content here --> <div class="header"> <div class="navbar navbar-default" role="navigation"> <div class="container"> <div class="navbar-header"> <a class="navbar-brand" href="#/">Happy Recycled Birthday!</a> </div> </div> </div> </div> <div class="container"> <div ng-view="" id="fb-root"></div> </div> <div class="footer"> <div class="container"> <p><span class="glyphicon glyphicon-heart"></span> Created with lots of gooey love.</p> </div> </div> <script src="scripts/vendor.ceb2b8a7.js"></script> <script src="scripts/scripts.a3cd37ad.js"></script>   <!--<!DOCTYPE html>
 <meta charset="utf-8">
 <html>
 <head>
@@ -21,3 +42,4 @@
   <p>Read <a href="https://developers.facebook.com/docs/facebook-login/login-flow-for-web/">our guide to using the JavaScript SDK for Facebook Login</a> to learn more about this process.</p>
 </body>
 </html>
+-->
