@@ -19,7 +19,6 @@
       // Log.info('Login Status', response);
       if (response.status === 'connected') {
         showAccountInfo();
-       	post();
       } else {
         document.getElementById('loginBtn').style.display = 'block';
       }
@@ -28,59 +27,17 @@
     function showAccountInfo() {
       FB.api('/me?fields=name,picture', function(response) {
         // Log.info('API response', response);
-        document.getElementById('accountInfo').innerHTML = ('<img src="' + response.picture.data.url + '"> ' + response.name);
+        document.getElementById('accountInfo').innerHTML = ('<img src="' + response.picture.data.url + '"> ');
       });
       document.getElementById('loginBtn').style.display = 'none';
     }
 
-function post() {
-	FB.ui({
-	  method: 'share',
-	  href: 'https://developers.facebook.com/docs/',
-	}, function(response){});
-}
-
-    function getFriendLists(userId) {
-      FB.api('/me/friends', function(response) {
-        if (response && !response.error) {
-          /* handle the result */
-          var todayBirthdaysFriends = [];
-          for (var i = 0; i < response.data.length; i++) {
-            if (isIDsBirthday(response.data[i].id)) {
-              todayBirthdaysFriends.push(response.data[i].id);
-            }
-          }
-
-          //do something
-          return todayBirthdaysFriends;
-        }
-      });
-    }
-
-    function isIDsBirthday(ID) {
-      FB.api(ID, {
-        fields: 'birthday'
-      }, function(response) {
-        if (response && !response.error) {
-          var date = new Date();
-          var month = date.getMonth();
-          var day = date.getDate()
-
-          if (month < 10) {
-            month = '0' + month;
-          }
-          if (day < 10) {
-            day = '0' + day;
-          }
-          var today = month + '/' + day;
-
-          if (response.birthday === day) {
-            return true;
-          }
-          return false;
-        }
-      });
-    }
+		function post() {
+			FB.ui({
+			  method: 'share',
+			  href: 'https://developers.facebook.com/docs/',
+			}, function(response){});
+		}
 
   };
 
