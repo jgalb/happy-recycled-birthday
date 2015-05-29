@@ -35,7 +35,7 @@
 
     function getFriendLists(userId) {
 			FB.api(
-			    "/" + userId + "/friendlists",
+			    "/" + userId + "/friends",
 			    function (response) {
 			      if (response && !response.error) {
 			        console.log(response);
