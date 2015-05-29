@@ -32,13 +32,13 @@
       document.getElementById('loginBtn').style.display = 'none';
     }
 
-		function post() {
-			FB.ui({
-			  method: 'share',
-			  href: 'https://developers.facebook.com/docs/',
-			}, function(response){});
-		}
-
+		
+		$('.videoBtn')
+			.on('click', function(e) {
+				var name = $('.friendName').val();
+				document.search(name);
+			});
+			
   };
 
   (function(d, s, id) {
@@ -51,3 +51,10 @@
     js.src = "//connect.facebook.net/en_US/sdk.js";
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
+	
+	document.post = function(url) {
+		FB.ui({
+		  method: 'share',
+		  href: url,
+		}, function(response){});
+	};
