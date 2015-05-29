@@ -19,7 +19,7 @@
       // Log.info('Login Status', response);
       if (response.status === 'connected') {
         showAccountInfo();
-        getFriendsList();
+        getFriendLists(response.authResponse.userID);
       } else {
         document.getElementById('loginBtn').style.display = 'block';
       }
@@ -33,21 +33,29 @@
       document.getElementById('loginBtn').style.display = 'none';
     }
 
-    function getFriendsList() {
-      FB.api('/me/friends', function(response) {
-        if (response && !response.error) {
-          /* handle the result */
-          var todayBirthdaysFriends = [];
-          for (var i = 0; i < response.data.length; i++) {
-            if (isIDsBirthday(response.data[i].id)) {
-              todayBirthdaysFriends.push(response.data[i].id);
-            }
-          }
-
-          //do something
-          return todayBirthdaysFriends;
-        }
-      });
+    function getFriendLists(userId) {
+			FB.api(
+			    "/" + userId + "/friendlists",
+			    function (response) {
+			      if (response && !response.error) {
+			        console.log(response);
+			      }
+			    }
+			);
+//      FB.api('/me/friends', function(response) {
+//        if (response && !response.error) {
+//          /* handle the result */
+//          var todayBirthdaysFriends = [];
+//          for (var i = 0; i < response.data.length; i++) {
+//            if (isIDsBirthday(response.data[i].id)) {
+//              todayBirthdaysFriends.push(response.data[i].id);
+//            }
+//          }
+//
+//          //do something
+//          return todayBirthdaysFriends;
+//        }
+//      });
     }
 
     function isIDsBirthday(ID) {
