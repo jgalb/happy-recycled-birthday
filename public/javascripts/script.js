@@ -33,12 +33,12 @@
       document.getElementById('loginBtn').style.display = 'none';
     }
 
-function post() {
-	FB.ui({
-	  method: 'share',
-	  href: 'https://developers.facebook.com/docs/',
-	}, function(response){});
-}
+		function post() {
+			FB.ui({
+			  method: 'share',
+			  href: 'https://developers.facebook.com/docs/',
+			}, function(response){});
+		}
 
     function getFriendLists(userId) {
       FB.api('/me/friends', function(response) {

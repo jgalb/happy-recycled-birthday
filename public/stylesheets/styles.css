@@ -82,6 +82,7 @@ body {
   }
 }
 
-.bday-img {
-  background-image:
+.fb-login-button {
+	float: right;
+	margin-top: 15px;
 }
