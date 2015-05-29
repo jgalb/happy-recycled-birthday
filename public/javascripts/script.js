@@ -4,8 +4,7 @@
       xfbml: true,
       version: 'v2.3'
     });
-
-
+    // ADD ADDITIONAL FACEBOOK CODE HERE
 
     FB.Event.subscribe('auth.statusChange', function(response) {
       Log.info('Status Change Event', response);
@@ -72,7 +71,6 @@
       });
     }
 
-    // ADD ADDITIONAL FACEBOOK CODE HERE
   };
 
   (function(d, s, id) {
