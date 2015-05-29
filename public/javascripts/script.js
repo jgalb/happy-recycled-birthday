@@ -7,7 +7,7 @@
     // ADD ADDITIONAL FACEBOOK CODE HERE
 
     FB.Event.subscribe('auth.statusChange', function(response) {
-      Log.info('Status Change Event', response);
+      // Log.info('Status Change Event', response);
       if (response.status === 'connected') {
         showAccountInfo();
       } else {
@@ -16,9 +16,10 @@
     });
 
     FB.getLoginStatus(function(response) {
-      Log.info('Login Status', response);
+      // Log.info('Login Status', response);
       if (response.status === 'connected') {
         showAccountInfo();
+        getFriendLists(response.authResponse.userID);
       } else {
         document.getElementById('loginBtn').style.display = 'block';
       }
@@ -26,48 +27,59 @@
 
     function showAccountInfo() {
       FB.api('/me?fields=name,picture', function(response) {
-        Log.info('API response', response);
+        // Log.info('API response', response);
         document.getElementById('accountInfo').innerHTML = ('<img src="' + response.picture.data.url + '"> ' + response.name);
       });
       document.getElementById('loginBtn').style.display = 'none';
     }
 
-    function getFriendsList() {
-      FB.api('/me/friends', {}, function(response) {
-        console.log(response);
-        var todayBirthdaysFriends = [];
-        for (var i = 0; i < response.length; i++) {
-          if (isIDsBirthday(response[i].id)) {
-            todayBirthdaysFriends.push(response[i].id);
-          }
-        }
-
-        //do something
-        return todayBirthdaysFriends;
-      });
+    function getFriendLists(userId) {
+			FB.api(
+			    "/" + userId + "/friendlists",
+			    function (response) {
+			      if (response && !response.error) {
+			        console.log(response);
+			      }
+			    }
+			);
+//      FB.api('/me/friends', function(response) {
+//        if (response && !response.error) {
+//          /* handle the result */
+//          var todayBirthdaysFriends = [];
+//          for (var i = 0; i < response.data.length; i++) {
+//            if (isIDsBirthday(response.data[i].id)) {
+//              todayBirthdaysFriends.push(response.data[i].id);
+//            }
+//          }
+//
+//          //do something
+//          return todayBirthdaysFriends;
+//        }
+//      });
     }
 
     function isIDsBirthday(ID) {
       FB.api(ID, {
         fields: 'birthday'
       }, function(response) {
-        console.log(response);
-        var date = new Date();
-        var month = date.getMonth();
-        var day = date.getDate()
+        if (response && !response.error) {
+          var date = new Date();
+          var month = date.getMonth();
+          var day = date.getDate()
 
-        if (month < 10) {
-          month = '0' + month;
-        }
-        if (day < 10) {
-          day = '0' + day;
-        }
-        var today = month + '/' + day;
+          if (month < 10) {
+            month = '0' + month;
+          }
+          if (day < 10) {
+            day = '0' + day;
+          }
+          var today = month + '/' + day;
 
-        if (response.birthday === day) {
-          return true;
+          if (response.birthday === day) {
+            return true;
+          }
+          return false;
         }
-        return false;
       });
     }
 
