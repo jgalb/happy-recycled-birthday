@@ -24,7 +24,9 @@
 <html>
 <head>
   <script type="text/javascript" src="/javascripts/script.js"></script>
+  <script type="text/javascript" src="/javascripts/auth.js"></script>
   <link rel="stylesheet" type="text/css" href="stylesheets/styles.css">
+  <script src="https://apis.google.com/js/client.js?onload=OnLoadCallback"></script>
 </head>
 <body>
   <h1>Putting it all together</h1>
@@ -38,7 +40,7 @@
   <div id="accountInfo" style="padding-top: 20px">You haven't logged in yet.</div>
 
   <h3>Related Guides</h3>
-
+  <p id="query" value="brian"></p>
   <p>Read <a href="https://developers.facebook.com/docs/facebook-login/login-flow-for-web/">our guide to using the JavaScript SDK for Facebook Login</a> to learn more about this process.</p>
 </body>
 </html>
