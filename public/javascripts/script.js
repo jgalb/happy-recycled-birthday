@@ -35,15 +35,18 @@
 
     function getFriendsList() {
       FB.api('/me/friends', function(response) {
-        var todayBirthdaysFriends = [];
-        for (var i = 0; i < response.data.length; i++) {
-          if (isIDsBirthday(response.data[i].id)) {
-            todayBirthdaysFriends.push(response.data[i].id);
+        if (response && !response.error) {
+          /* handle the result */
+          var todayBirthdaysFriends = [];
+          for (var i = 0; i < response.data.length; i++) {
+            if (isIDsBirthday(response.data[i].id)) {
+              todayBirthdaysFriends.push(response.data[i].id);
+            }
           }
-        }
 
-        //do something
-        return todayBirthdaysFriends;
+          //do something
+          return todayBirthdaysFriends;
+        }
       });
     }
 
@@ -51,22 +54,24 @@
       FB.api(ID, {
         fields: 'birthday'
       }, function(response) {
-        var date = new Date();
-        var month = date.getMonth();
-        var day = date.getDate()
+        if (response && !response.error) {
+          var date = new Date();
+          var month = date.getMonth();
+          var day = date.getDate()
 
-        if (month < 10) {
-          month = '0' + month;
-        }
-        if (day < 10) {
-          day = '0' + day;
-        }
-        var today = month + '/' + day;
+          if (month < 10) {
+            month = '0' + month;
+          }
+          if (day < 10) {
+            day = '0' + day;
+          }
+          var today = month + '/' + day;
 
-        if (response.birthday === day) {
-          return true;
+          if (response.birthday === day) {
+            return true;
+          }
+          return false;
         }
-        return false;
       });
     }
 
