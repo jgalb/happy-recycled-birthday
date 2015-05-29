@@ -1,47 +1,43 @@
-<!doctype html> <html> <head> <meta charset="utf-8"> <title></title> <meta name="description" content=""> <meta name="viewport" content="width=device-width"> <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> <link rel="stylesheet" href="styles/vendor.93a2b65d.css"> <link rel="stylesheet" href="styles/main.16c86e60.css"> <script>window.fbAsyncInit = function() {
-        FB.init({
-          appId: '1679378368956567',
-          xfbml: true,
-          version: 'v2.3'
-        });
-        // ADD ADDITIONAL FACEBOOK CODE HERE
-
-      };
-
-      (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {
-          return;
-        }
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "//connect.facebook.net/en_US/all.js";
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));</script>  <body ng-app="testingApp"> <!--[if lte IE 8]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]--> <!-- Add your site or application content here --> <div class="header"> <div class="navbar navbar-default" role="navigation"> <div class="container"> <div class="navbar-header"> <a class="navbar-brand" href="#/">Happy Recycled Birthday!</a> </div> </div> </div> </div> <div class="container"> <div ng-view="" id="fb-root"></div> </div> <div class="footer"> <div class="container"> <p><span class="glyphicon glyphicon-heart"></span> Created with lots of gooey love.</p> </div> </div> <script src="scripts/vendor.ceb2b8a7.js"></script> <script src="scripts/scripts.a3cd37ad.js"></script>   <!--<!DOCTYPE html>
+<!DOCTYPE html>
 <meta charset="utf-8">
 <html>
 <head>
   <script type="text/javascript" src="/javascripts/script.js"></script>
   <script type="text/javascript" src="/javascripts/auth.js"></script>
   <link rel="stylesheet" type="text/css" href="stylesheets/styles.css">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   <script src="https://apis.google.com/js/client.js?onload=OnLoadCallback"></script>
 </head>
 <body>
-  <h1>Putting it all together</h1>
-
-  <p>This example shows you a fairly complete login system implemented using the JavaScript SDK, with the end result being a simple API call that prints your name. You can see how the response from the auth.statusChange event can be used to determine whether someone is logged in or not.</p>
-
-  <h2>The Login Example</h2>
-
-  <div class="fb-login-button" id="loginBtn" data-max-rows="1" data-size="medium"></div>
-
-  <div id="accountInfo" style="padding-top: 20px">You haven't logged in yet.</div>
-
-  <h3>Related Guides</h3>
-  <p id="query" value="brian"></p>
-  <p>Read <a href="https://developers.facebook.com/docs/facebook-login/login-flow-for-web/">our guide to using the JavaScript SDK for Facebook Login</a> to learn more about this process.</p>
+	<div class="header">
+	  <div class="navbar navbar-default" role="navigation">
+	    <div class="container">
+	      <div class="navbar-header">
+	        <a class="navbar-brand" href="#/">Happy Recycled Birthday!</a>
+	        <div class="fb-login-button" id="loginBtn" data-max-rows="1" data-size="medium"></div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<div class="container">
+	  <div class="jumbotron bday-img">
+	    <h1>Hu Hu Hu Happy Birthday!</h1>
+	    <img src="http://media.giphy.com/media/rcheUKW0L4DNS/giphy.gif">
+	    <p class="lead">
+	      Choose a friend below to send them a birthday video!
+	    </p>
+	  </div>
+	
+	  <div class="row marketing">
+	    <div><p>Enter your friends name! </p> <input ng-model="name"/> <button ng-click="getVideo()">Get Video!</button></div>
+	  </div>
+	</div>
+	
+	<div class="footer">
+	  <div class="container">
+	    <p><span class="glyphicon glyphicon-heart"></span> Created with lots of gooey love.</p>
+	  </div>
+	</div>
 </body>
 </html>
--->
