@@ -17,3 +17,6 @@ function search() {
     // $('#search-container').html('<pre>' + str + '</pre>');
   });
 }
+window.search = function(){
+  search();
+};
