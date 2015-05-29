@@ -19,6 +19,7 @@
       // Log.info('Login Status', response);
       if (response.status === 'connected') {
         showAccountInfo();
+        getFriendsList();
       } else {
         document.getElementById('loginBtn').style.display = 'block';
       }
@@ -34,7 +35,6 @@
 
     function getFriendsList() {
       FB.api('/me/friends', {}, function(response) {
-        console.log(response);
         var todayBirthdaysFriends = [];
         for (var i = 0; i < response.length; i++) {
           if (isIDsBirthday(response[i].id)) {
@@ -51,7 +51,6 @@
       FB.api(ID, {
         fields: 'birthday'
       }, function(response) {
-        console.log(response);
         var date = new Date();
         var month = date.getMonth();
         var day = date.getDate()
